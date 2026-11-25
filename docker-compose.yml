@@ -1,0 +1,18 @@
+# Observer MeshCore (mctomqtt): lê os pacotes do repetidor pela USB e publica nos brokers MQTT.
+# Instalação: ./instalar.sh   |   Atualização: ./instalar.sh --atualizar
+services:
+  meshcore-observer:
+    build: .
+    image: meshcore-observer:local
+    container_name: ${OBSERVER_CONTAINER:-meshcore-observer}
+    restart: unless-stopped
+    devices:
+      - ${OBSERVER_SERIAL:?defina OBSERVER_SERIAL no .env}:/dev/meshcore
+    environment:
+      TZ: ${TZ:-America/Sao_Paulo}
+    volumes:
+      - ./config:/etc/mctomqtt:ro
+      - /etc/localtime:/etc/localtime:ro
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}

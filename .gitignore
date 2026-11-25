@@ -1,0 +1,5 @@
+# configuração local (senhas, e-mail) e escolhas da instalação — nunca vão para o GitHub
+.env
+config/config.d/
+*.bak*
+__pycache__/

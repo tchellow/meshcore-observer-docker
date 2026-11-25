@@ -1,0 +1,32 @@
+# Observer MeshCore — configuração local (gerada pelo instalar.sh em config/config.d/99-user.toml)
+# Carregada por último: sobrepõe config.toml e os presets 10-*.toml.
+
+[general]
+# código IATA de 3 letras da sua região (aeroporto mais próximo), ex.: GRU, CWB, QDV
+iata = "XXX"
+mesh_packet_logging = true
+
+[serial]
+# o docker-compose mapeia o rádio para este caminho
+ports = ["/dev/meshcore"]
+
+# --- e-mail de contato nos brokers com autenticação por token (LetsMesh, MeshMapper...) ---
+# [[broker]]
+# name = "letsmesh-us"
+# [broker.auth]
+# email = "voce@exemplo.com"
+
+# --- broker próprio com usuário/senha (opcional) ---
+# [[broker]]
+# name = "custom-1"
+# enabled = true
+# server = "mqtt.exemplo.com.br"
+# port = 1883
+# transport = "tcp"
+# keepalive = 60
+# qos = 0
+# retain = true
+# [broker.auth]
+# method = "password"
+# username = "usuario"
+# password = "senha"
